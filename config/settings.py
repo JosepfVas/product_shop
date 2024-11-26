@@ -43,8 +43,9 @@ INSTALLED_APPS = [
     'drf_yasg',
 
     # App's
-    'products'
-    'users'
+    'products',
+    'users',
+
 ]
 
 MIDDLEWARE = [
@@ -111,7 +112,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTH_USER_MODEL = "users.User"
+AUTH_USER_MODEL = 'users.User'
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/

@@ -49,6 +49,7 @@ class Product(models.Model):
     name = models.CharField(max_length=200, verbose_name='название продукта')
     description = models.TextField(verbose_name='описание продукта')
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='цена продукта')
+    slug = models.SlugField(unique=True)
     image_small = models.ImageField(upload_to='products/small/', **NULLABLE, verbose_name='маленькое изображение '
                                                                                           'продукта')
     image_medium = models.ImageField(upload_to='products/medium/', **NULLABLE, verbose_name='среднее изображение '

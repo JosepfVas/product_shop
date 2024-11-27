@@ -4,6 +4,7 @@ from products.models import Category, Subcategory, Product
 
 class CategorySerializer(ModelSerializer):
     """Сериализатор категорий"""
+
     class Meta:
         model = Category
         fields = '__all__'
@@ -11,6 +12,7 @@ class CategorySerializer(ModelSerializer):
 
 class SubcategorySerializer(ModelSerializer):
     """Сериализатор подкатегорий"""
+
     class Meta:
         model = Subcategory
         fields = '__all__'
@@ -18,6 +20,7 @@ class SubcategorySerializer(ModelSerializer):
 
 class ProductSerializer(ModelSerializer):
     """Сериализатор продуктов"""
+
     class Meta:
         model = Product
         fields = '__all__'

@@ -39,6 +39,7 @@ urlpatterns = [
                   path('admin/', admin.site.urls),
                   path('products/', include(('products.urls', 'products'), namespace='products')),
                   path('users/', include(('users.urls', 'users'), namespace='users')),
+                  path('basket/', include(('basket.urls', 'basket'), namespace='basket')),
 
                   # docs
                   path(

@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     # App's
     'products',
     'users',
+    'basket',
 
 ]
 

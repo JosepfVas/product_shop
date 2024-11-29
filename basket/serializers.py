@@ -4,7 +4,7 @@ from basket import models
 from basket.models import Basket, BasketItem
 
 
-class CartItemSerializer(serializers.ModelSerializer):
+class BasketItemSerializer(serializers.ModelSerializer):
     product_name = serializers.ReadOnlyField(source='product.name')
     product_price = serializers.ReadOnlyField(source='product.price')
 
@@ -13,8 +13,8 @@ class CartItemSerializer(serializers.ModelSerializer):
         fields = ['id', 'product', 'product_name', 'product_price', 'quantity']
 
 
-class CartSerializer(serializers.ModelSerializer):
-    items = CartItemSerializer(many=True, read_only=True)
+class BasketSerializer(serializers.ModelSerializer):
+    items = BasketItemSerializer(many=True, read_only=True)
 
     class Meta:
         model = Basket

@@ -4,18 +4,25 @@ from products.models import Product
 
 
 class Basket(models.Model):
-    """ Модель корзины """
+    """Модель корзины, связанная с пользователем"""
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='basket', verbose_name='Пользователь')
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    def get_total_price(self):
+        """Подсчет общей стоимости товаров в корзине"""
+        return sum(item.get_total_price() for item in self.items.all())
+
+    def get_total_items(self):
+        """Подсчет общего количества товаров"""
+        return sum(item.quantity for item in self.items.all())
 
 
 class BasketItem(models.Model):
-    """ Промежуточная модель для корзины """
+    """Модель элемента корзины"""
+    basket = models.ForeignKey(Basket, on_delete=models.CASCADE, related_name='items', verbose_name='Корзина')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='Продукт')
+    quantity = models.PositiveIntegerField(default=1, verbose_name='Количество')
 
-    cart = models.ForeignKey(Basket, on_delete=models.CASCADE, verbose_name='связь с корзиной')
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='связь с продуктами')
-    quantity = models.PositiveIntegerField(default=1, verbose_name='количество')
-    added_at = models.DateTimeField(auto_now_add=True, verbose_name='время добавления')
+    def get_total_price(self):
+        """Подсчет стоимости текущего товара"""
+        return self.product.price * self.quantity
 
-    class Meta:
-        unique_together = ('cart', 'product')  # Один продукт в корзине только один раз

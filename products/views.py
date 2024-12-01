@@ -1,4 +1,5 @@
 from rest_framework import generics
+from rest_framework.permissions import AllowAny
 from products.models import Category, Subcategory, Product
 from products.paginators import CustomPaginator
 from products.serializers import CategorySerializer, SubcategorySerializer, ProductSerializer
@@ -10,6 +11,7 @@ class CategoryListAPIView(generics.ListAPIView):
     serializer_class = CategorySerializer
     queryset = Category.objects.all()
     pagination_class = CustomPaginator
+    permission_classes = [AllowAny]
 
 
 class SubcategoryListAPIView(generics.ListAPIView):
@@ -18,6 +20,7 @@ class SubcategoryListAPIView(generics.ListAPIView):
     serializer_class = SubcategorySerializer
     queryset = Subcategory.objects.all()
     pagination_class = CustomPaginator
+    permission_classes = [AllowAny]
 
 
 class ProductListAPIView(generics.ListAPIView):
@@ -26,6 +29,7 @@ class ProductListAPIView(generics.ListAPIView):
     serializer_class = ProductSerializer
     queryset = Product.objects.all()
     pagination_class = CustomPaginator
+    permission_classes = [AllowAny]
 
 
 class ProductRetrieveAPIView(generics.RetrieveAPIView):
@@ -33,3 +37,4 @@ class ProductRetrieveAPIView(generics.RetrieveAPIView):
 
     serializer_class = ProductSerializer
     queryset = Product.objects.all()
+    permission_classes = [AllowAny]

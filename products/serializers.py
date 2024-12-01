@@ -1,4 +1,4 @@
-from rest_framework.serializers import ModelSerializer, SerializerMethodField
+from rest_framework.serializers import ModelSerializer, SerializerMethodField, CharField
 from products.models import Category, Subcategory, Product
 
 
@@ -20,7 +20,8 @@ class SubcategorySerializer(ModelSerializer):
 
 class ProductSerializer(ModelSerializer):
     """Сериализатор продуктов"""
-
+    category = CharField(source='subcategory.category.name', read_only=True)
+    subcategory = CharField(source='subcategory.name', read_only=True)
     all_images = SerializerMethodField()
 
     class Meta:

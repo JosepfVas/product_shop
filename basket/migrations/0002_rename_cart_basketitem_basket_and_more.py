@@ -6,18 +6,18 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('basket', '0001_initial'),
-        ('products', '0001_initial'),
+        ("basket", "0001_initial"),
+        ("products", "0001_initial"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='basketitem',
-            old_name='cart',
-            new_name='basket',
+            model_name="basketitem",
+            old_name="cart",
+            new_name="basket",
         ),
         migrations.AlterUniqueTogether(
-            name='basketitem',
-            unique_together={('basket', 'product')},
+            name="basketitem",
+            unique_together={("basket", "product")},
         ),
     ]

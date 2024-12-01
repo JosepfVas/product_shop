@@ -4,23 +4,32 @@ from .models import Category, Subcategory, Product
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'slug',)
-    search_fields = ('name', 'slug')
-    prepopulated_fields = {'slug': ('name',)}
-    list_filter = ('name',)
+    list_display = (
+        "id",
+        "name",
+        "slug",
+    )
+    search_fields = ("name", "slug")
+    prepopulated_fields = {"slug": ("name",)}
+    list_filter = ("name",)
 
 
 @admin.register(Subcategory)
 class SubcategoryAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'category', 'slug',)
-    search_fields = ('name', 'slug', 'category__name')
-    prepopulated_fields = {'slug': ('name',)}
-    list_filter = ('category',)
+    list_display = (
+        "id",
+        "name",
+        "category",
+        "slug",
+    )
+    search_fields = ("name", "slug", "category__name")
+    prepopulated_fields = {"slug": ("name",)}
+    list_filter = ("category",)
 
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'price', 'subcategory', 'slug')
-    list_filter = ('subcategory',)
-    search_fields = ('name', 'subcategory__name')
-    prepopulated_fields = {'slug': ('name',)}
+    list_display = ("id", "name", "price", "subcategory", "slug")
+    list_filter = ("subcategory",)
+    search_fields = ("name", "subcategory__name")
+    prepopulated_fields = {"slug": ("name",)}

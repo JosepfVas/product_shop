@@ -2,7 +2,11 @@ from rest_framework import generics
 from rest_framework.permissions import AllowAny
 from products.models import Category, Subcategory, Product
 from products.paginators import CustomPaginator
-from products.serializers import CategorySerializer, SubcategorySerializer, ProductSerializer
+from products.serializers import (
+    CategorySerializer,
+    SubcategorySerializer,
+    ProductSerializer,
+)
 
 
 class CategoryListAPIView(generics.ListAPIView):

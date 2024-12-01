@@ -8,53 +8,146 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Category',
+            name="Category",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=200, verbose_name='название категории')),
-                ('slug', models.SlugField(unique=True)),
-                ('image', models.ImageField(blank=True, null=True, upload_to='categories/', verbose_name='изображение')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(max_length=200, verbose_name="название категории"),
+                ),
+                ("slug", models.SlugField(unique=True)),
+                (
+                    "image",
+                    models.ImageField(
+                        blank=True,
+                        null=True,
+                        upload_to="categories/",
+                        verbose_name="изображение",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Категория',
-                'verbose_name_plural': 'Категории',
+                "verbose_name": "Категория",
+                "verbose_name_plural": "Категории",
             },
         ),
         migrations.CreateModel(
-            name='Subcategory',
+            name="Subcategory",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=200, verbose_name='название подкатегории')),
-                ('slug', models.SlugField(unique=True)),
-                ('image', models.ImageField(blank=True, null=True, upload_to='subcategories/', verbose_name='изображение')),
-                ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='products.category', verbose_name='ссылка на категорию')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(
+                        max_length=200, verbose_name="название подкатегории"
+                    ),
+                ),
+                ("slug", models.SlugField(unique=True)),
+                (
+                    "image",
+                    models.ImageField(
+                        blank=True,
+                        null=True,
+                        upload_to="subcategories/",
+                        verbose_name="изображение",
+                    ),
+                ),
+                (
+                    "category",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="products.category",
+                        verbose_name="ссылка на категорию",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Подкатегория',
-                'verbose_name_plural': 'Подкатегории',
+                "verbose_name": "Подкатегория",
+                "verbose_name_plural": "Подкатегории",
             },
         ),
         migrations.CreateModel(
-            name='Product',
+            name="Product",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=200, verbose_name='название продукта')),
-                ('description', models.TextField(verbose_name='описание продукта')),
-                ('price', models.DecimalField(decimal_places=2, max_digits=10, verbose_name='цена продукта')),
-                ('slug', models.SlugField(unique=True)),
-                ('image_small', models.ImageField(blank=True, null=True, upload_to='products/small/', verbose_name='маленькое изображение продукта')),
-                ('image_medium', models.ImageField(blank=True, null=True, upload_to='products/medium/', verbose_name='среднее изображение продукта')),
-                ('image_large', models.ImageField(blank=True, null=True, upload_to='products/large/', verbose_name='большое изображение продукта')),
-                ('subcategory', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='products.subcategory', verbose_name='ссылка на подкатегорию')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(max_length=200, verbose_name="название продукта"),
+                ),
+                ("description", models.TextField(verbose_name="описание продукта")),
+                (
+                    "price",
+                    models.DecimalField(
+                        decimal_places=2, max_digits=10, verbose_name="цена продукта"
+                    ),
+                ),
+                ("slug", models.SlugField(unique=True)),
+                (
+                    "image_small",
+                    models.ImageField(
+                        blank=True,
+                        null=True,
+                        upload_to="products/small/",
+                        verbose_name="маленькое изображение продукта",
+                    ),
+                ),
+                (
+                    "image_medium",
+                    models.ImageField(
+                        blank=True,
+                        null=True,
+                        upload_to="products/medium/",
+                        verbose_name="среднее изображение продукта",
+                    ),
+                ),
+                (
+                    "image_large",
+                    models.ImageField(
+                        blank=True,
+                        null=True,
+                        upload_to="products/large/",
+                        verbose_name="большое изображение продукта",
+                    ),
+                ),
+                (
+                    "subcategory",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="products.subcategory",
+                        verbose_name="ссылка на подкатегорию",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Продукт',
-                'verbose_name_plural': 'Продукты',
+                "verbose_name": "Продукт",
+                "verbose_name_plural": "Продукты",
             },
         ),
     ]
